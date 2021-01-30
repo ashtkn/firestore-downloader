@@ -1,0 +1,59 @@
+{
+  "name": "firestore-downloader",
+  "version": "1.0.0",
+  "description": "Downloader to save all collections on Firestore",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "ts-node src/index.ts",
+    "dev:watch": "ts-node-dev --respawn src/index.ts",
+    "type-check": "tsc --noEmit",
+    "build": "tsc",
+    "start": "node .",
+    "lint": "eslint --ext .js,.ts --ignore-path .gitignore src",
+    "format": "prettier --write 'src/**/*.{js,ts,json}'",
+    "clean": "rimraf dist/*"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts,json}": [
+      "npm run format"
+    ],
+    "src/**/*.{js,ts}": [
+      "npm run type-check",
+      "npm run lint -- --fix"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ashtkn/firestore-downloader.git"
+  },
+  "author": "Asahi Takenouchi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ashtkn/firestore-downloader/issues"
+  },
+  "homepage": "https://github.com/ashtkn/firestore-downloader#readme",
+  "devDependencies": {
+    "@types/node": "^14.14.22",
+    "@typescript-eslint/eslint-plugin": "^4.14.1",
+    "@typescript-eslint/parser": "^4.14.1",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.3.1",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.3",
+    "prettier": "^2.2.1",
+    "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.1",
+    "typescript": "^4.1.3"
+  },
+  "dependencies": {
+    "firebase-admin": "^9.4.2"
+  }
+}
